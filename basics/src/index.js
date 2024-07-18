@@ -17,7 +17,8 @@ const readFileSync = (path) => fs.readFileSync(path, { encoding: "utf-8" });
 const readData = R.pipe(
   //readF is the function read the pipeline
   R.converge(R.concat, [
-    () => "fooooo", //extract btc or eth from the path ,
+    R.pipe(R.split("/"), R.split(".")),
+    R.identity, //extract btc or eth from the path ,
     readFileSync, //read the file contents
   ])
 );
@@ -47,7 +48,7 @@ R.pipe(
   // we now have a array of arrays, not a string
   // so we need to map over the first array and then map over the second array
   // map over these data , map over the files and split over \r
-  R.map(R.map(R.split("\r"))),
+  R.map(R.map(R.split("\t"))),
   //only want the first 2 columns
   R.map(R.map(R.take(2))),
   console.log
