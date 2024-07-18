@@ -28,6 +28,9 @@ R.pipe(
   // we can apply it and curry it as it will work on the latest value
   // when we get it from the pipeline, map will only get the data.
   // so it will be array of arrays, one from btc, one from eth
+  // removing the last 1 element
+  R.map(R.dropLast(1)),
+
   console.log
 )(
   //i.e the paths to the files we have created
