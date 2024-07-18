@@ -1,0 +1,17 @@
+{
+  "name": "basics",
+  "module": "src/index.js",
+  "type": "module",
+  "scripts":{
+    "build":"bun src/index.js"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "rambda": "^9.2.1"
+  }
+}
