@@ -12,7 +12,7 @@ import * as R from "rambda";
 const f = (x, y, z) => x + y + z;
 
 //curry version of f , only allow one way of calling it
-const g = (x) => (y) => (z) => z + y + z;
+const g = (x) => (y) => (z) => x + y + z;
 
 //all ramda functions are autocurried by default
 g(1)(2)(3);
@@ -37,3 +37,7 @@ const dec2 = R.subtract(R.__, 1);
 
 console.log(dec1(10));
 console.log(dec2);
+
+//currying the arguments
+console.log(R.add(10)(20));
+
