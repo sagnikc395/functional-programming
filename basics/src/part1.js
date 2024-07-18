@@ -31,3 +31,9 @@ console.log(f2(70));
 const dec = R.subtract(R.__, 1);
 // const op = dec(10);
 // console.log(op);
+
+const dec1 = R.subtract(1);
+const dec2 = R.subtract(R.__, 1);
+
+console.log(dec1(10));
+console.log(dec2);
