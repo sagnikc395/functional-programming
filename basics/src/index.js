@@ -22,6 +22,12 @@ R.pipe(
   //adding read file to the pipeline
   // map the function readF to the R and log it
   R.map(readF),
+  //want to go through the files and want to structure it
+  // rows seperated by \n
+  R.map(R.split("\n")),
+  // we can apply it and curry it as it will work on the latest value
+  // when we get it from the pipeline, map will only get the data.
+  // so it will be array of arrays, one from btc, one from eth
   console.log
 )(
   //i.e the paths to the files we have created
