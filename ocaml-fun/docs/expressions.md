@@ -196,3 +196,23 @@ the old one.
 - The old varibale is still around, and its value is immutable -> it never , ever changes.
 - so even though let expressions might superficially look like assignment statements from imperative languages,
 they are actually quite different.
+
+#### Type Annotations:
+- OCaml automatically infers the type of every expressions -> with no need for the programmer
+to write it manually.
+- Nonetheless, it can sometimes can be useuful to manually specify the desired type of an expression.
+- A type annotation does that.
+```ocaml
+(5: int)
+```
+- an incorrect annotation will produce a compile-time error.
+- Syntax -> syntax of type annotation.
+  - (e: t)
+- note that the parentheses are required.
+- Dynamic Semantics: there is no run-time meaning for a type annotation.
+It goes away during compilation , because it indicates a compile-time check.
+There is no run-time conversion.
+- So if (e: t) compiled successfully, then at run-time it is simply e, and it evaluates
+as e would.
+
+- Static Semantics: If e has type t, then (e: t) has type t.
