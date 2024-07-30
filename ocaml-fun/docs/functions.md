@@ -24,3 +24,21 @@ algorithmically, but we could it ourselves, too.
 let rec f x1 ... xn = e1
 and g y1 ... y2 = e2
 ```
+
+#### Type Semantics for function types:
+- t -> u
+- t1 -> t2 -> u
+- t1 -> ... -> tn -> u
+
+- t and u are metavariables indicating types.
+- t -> u is the type of a function that takes an input of type t and returns a
+output of type u.
+- it takes 2 inputs , the first of type t1 and the second type as t2, and returns the output
+of type u.
+- The type checking rule for recursive function assumes that the function identifier
+f has a particular type, then checks to see whether the body of the function is well-typed
+that assumption.
+- f is in scope inside the function body itself.
+
+#### Anonymous Functions:
+- OCaml functions do not have to have names -> they may be anonymous.
