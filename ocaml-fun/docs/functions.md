@@ -18,3 +18,9 @@ of bits. In current implementations , due to architecture size, is 63 bits.
 - The OCaml compiler infers them for us automatically. The compiler solved this type inference problem
 algorithmically, but we could it ourselves, too.
 - It's like a mystery that can be solved by our mental power of deduction.
+
+- we can define mutualy recursive functions can be defined with the and keyword:
+```ocaml
+let rec f x1 ... xn = e1
+and g y1 ... y2 = e2
+```
