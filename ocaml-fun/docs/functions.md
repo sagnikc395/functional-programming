@@ -14,3 +14,7 @@
 
 - OCaml integers are not the "mathematical" integers but are limited to a fixed number
 of bits. In current implementations , due to architecture size, is 63 bits.
+
+- The OCaml compiler infers them for us automatically. The compiler solved this type inference problem
+algorithmically, but we could it ourselves, too.
+- It's like a mystery that can be solved by our mental power of deduction.
