@@ -12,4 +12,5 @@
 - recrusive function definitions:
   let rec f x = ...
 
--
+- OCaml integers are not the "mathematical" integers but are limited to a fixed number
+of bits. In current implementations , due to architecture size, is 63 bits.
