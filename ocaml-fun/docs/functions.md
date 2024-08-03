@@ -210,3 +210,28 @@ let f =
 
 - so even though we think of f as a function that tkaes n arguments, in reality it is a function that takes 1 argument and returns a function.
 - i.e t1 -> t2 -> t3 -> t4 means t1 -> (t2 -> (t3 -> t4))
+
+- Function types are right associative -> there are implicit parentheses around function types -> from right to left. The intuition here is that a function takes a single argument and returns a new function that expects the remaining arguments.
+
+### Operators as Functions:
+
+- Addition operator + has type int -> int -> int. It's is normally written infix 3+4. By putting parenthese around, we can make it prefix operator.
+
+```ocaml
+( + );;
+( + ) 3 4;;
+let add3 = ( + ) 3;;
+add3 2;;
+```
+
+- The same technique works for any built-in operator.
+- spaces are not required, but be aware of multiplication: ( \* ) , which must be written as like that , otherwise it would be parsed as beginning a comment.
+- We can also define our own infix operators like:
+
+```ocaml
+let ( ^^ ) x y =  max x y ;;
+```
+
+### Tail Recursion:
+
+-
