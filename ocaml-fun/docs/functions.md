@@ -243,3 +243,28 @@ let ( ^^ ) x y =  max x y ;;
 - A solution to this issue -> Tail Call Optimization, requires some cooperation between the programmer and the compiler. The programmer does a little rewriting of the function, which the compiler then notices and applies an optimization over.
 - After the recurisve call count( n - 1) , there is computation remaining: the computer still needs to add 1 to the result of that call.
 - But we as programmers could rewrite the count function so that it does not need to do any additional computation after the recursive calls. The trick is to create a helper function with an extra param.
+
+- The TCO optimized version, adds an extra parameter named acc, which is idiomatic and stands for "accumulator".The idea is that the value we want to return from the function is slowly, with each recursive call, being accumulated in it.
+- The "remaining" computation-> i.e adding 1 -> now happens before the recurisve call not after. When the abse case of the recursion finally arrives, the function now returns acc, where the answer has been accumulated.
+
+- A good compiler (i.e OCaml compiler) can notice when a recursive call is in a tail position, which is a technical way of saying that there is "no more computation to be done after it returns". The recursive call to count_aux is in tail position, the recursive call to count is not.
+
+**_Why Tail Position Matters_**
+
+- A recurisve call in tail position does not need a new stack frame. It can just reuse the exisiting stack frame.
+- This is because there is nothing left of use in the existing stack frame.
+- No computation left to be done, so none of the local variables, or next instruction to execute etc. matter any more.
+- None of that memory space ever needs to be read again, because that call is effectively already finished. So instead of wasting space by allocating another stack frame, the compiler "recycles" the space used by the previous frame.
+- TC goes down from O(n) stack frames to O(1) stack frames.
+
+### Importance and Recipes for Tail Recursion:
+
+- Important that the compiler support the optimization. Otherwise, the transformation we do at the code as a programmer makes no difference. Indeed, most compilers do support it, at least as an option.
+
+#### Recipe for Tail Recursion:
+
+1. Change the function into a helper function -> add an extra argument: the accumulator,often named acc.
+2. Write a new "main" version of the function that calls the helper. It passed the original base case's return value as the initial value of the accumulator.
+3. Change the helper function to return the accumulator in the base case.
+4. Change the helper function's recursive case. It now needs to do the extra work on the accumulator argument,before the recursive call.
+
