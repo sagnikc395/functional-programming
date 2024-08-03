@@ -234,4 +234,12 @@ let ( ^^ ) x y =  max x y ;;
 
 ### Tail Recursion:
 
--
+- Call stack has a limited size -> each element stores info like the values of the local variables and which instruction in the function is currently being executed.
+- When the eval of one function body calls another, a new element is pushed onto the call stack and popped off when the called function completes.
+
+- Size of the stack is limited by the OS. So if the stack runs out of space, it becomes impossible to make another function call. Normally this wouldnt happend, because there is no reason to make that many successive function calls before returning.
+- In cases, where it does happen, there is a good reason for the OS to make that program stop: it might be in the process of eating up all the memory available on the entire computer, thus harming other programs running on the same computer.
+
+- A solution to this issue -> Tail Call Optimization, requires some cooperation between the programmer and the compiler. The programmer does a little rewriting of the function, which the compiler then notices and applies an optimization over.
+- After the recurisve call count( n - 1) , there is computation remaining: the computer still needs to add 1 to the result of that call.
+- But we as programmers could rewrite the count function so that it does not need to do any additional computation after the recursive calls. The trick is to create a helper function with an extra param.

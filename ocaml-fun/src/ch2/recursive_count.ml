@@ -7,3 +7,4 @@ let rec count n =
 let () =
   print_endline (string_of_int (count 10));
   print_endline (string_of_int (count 100_000));
+
