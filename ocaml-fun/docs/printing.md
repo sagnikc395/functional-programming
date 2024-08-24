@@ -57,7 +57,64 @@ let ignore _ = ()
 - Another very useful variant of printf -> sprintf , which collects the output in string instead of printing it:
 
 ```ocaml
-let string_of_stat name num = 
-    Printf.printf "%s: %F" name num 
+let string_of_stat name num =
+    Printf.printf "%s: %F" name num
 ```
 
+- Printf.printf is the format specifier. It looks like a string, but there is more to it than that. It is actually understood by the OCaml compiler in quite a deep way. Inside the format specifier there are:
+
+  - plain characters.
+  - conversion specifiers, which begin with %
+
+- Some common conversion specifiers are:
+
+  - %s -> for string
+  - %f -> floating point
+    etc.
+  - %! -> means to flush to the output buffer. Since output is often buffered , meaning that it doesnt happen all at once or right away. Flushing the buffer ensures that anything still sitting in the buffer gets output immediately.
+
+- OCaml will also detect the wrong argument specifier.
+
+- Another useful variant of printf is sprintf , which collects the output in string instead of printing it:
+
+```ocaml
+let string_of_stat name num =
+  Printf.sprintf "%s: %F" name num
+```
+
+### Ignore:
+
+- if e1 does not have type unit, then e1; e2 will give us a warning, because we are discarding a potentially useful value.
+- If that is truly our intennt , we call the built-in function ignore: 'a -> uint to convert any value to ().
+
+- Ignore is easily implemented as:
+
+```ocaml
+let ignore x = ()
+```
+
+- or we can even write underscore to indicate that the function takes in a value but does not bind the value to a name. That means that the function can never use that value in this body.
+
+```ocaml
+let ignore _ = ()
+```
+
+### Debugging in OCaml:
+
+1. Print statements -> insert a print stmt to ascertain the value of a variable.
+
+2. Function traces -> to trace of recursive calls and returns for a function.Use the $trace directive.
+
+```ocaml
+let rec fib x = if x <= 1 then 1 else fib (x-1) + fib(x-2);;
+#trace fib;;
+
+```
+
+- to stop tracing , use the #untrace directive.
+
+3. Debugger -> OCaml has a debugging tool called as ocamldebug.Best used only with Emacs.
+
+### Defensive Programming:
+
+- One defense against bugs is to make any bugs (or errors) immediately visible. That idea connects with the idea of precondition.
