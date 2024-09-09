@@ -1,6 +1,4 @@
-## functional-programming
+## ocaml-fun
 
-A tour and self exploration of functional programming and functional programming techniques.
-
-- Using a compiled , academic compiled functional programming language.
-- OCaml.
+Functional Programming in OCaml .
+Following along the [CS3110 course](https://cs3110.github.io/textbook/cover.html)
